@@ -49,11 +49,16 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
+            Text(
+              'ИКБО-07-21',
+              style: Theme.of(context).textTheme.headlineMedium,
             ),
             Text(
-              '$_counter',
+              '21И0560',
+              style: Theme.of(context).textTheme.headlineMedium,
+            ),
+            Text(
+              'Пеленицына Полина Александровна',
               style: Theme.of(context).textTheme.headlineMedium,
             ),
           ],
