@@ -1,22 +1,51 @@
 import 'package:flutter/material.dart';
 
-class PlantListScreen extends StatelessWidget {
-  final List<String> plants = ['Роза', 'Орхидея', 'Суккулент', 'Кактус'];
+class PlantListScreen extends StatefulWidget {
+  const PlantListScreen({super.key});
 
-  PlantListScreen({super.key});
+  @override
+  _PlantListScreenState createState() => _PlantListScreenState();
+}
+
+class _PlantListScreenState extends State<PlantListScreen> {
+  final List<String> plants = ['Роза', 'Орхидея', 'Суккулент', 'Кактус'];
+  final TextEditingController _textController = TextEditingController();
+
+  void _addPlant() {
+    setState(() {
+      if (_textController.text.isNotEmpty) {
+        plants.add(_textController.text);
+        _textController.clear();
+      }
+    });
+  }
+
+  void _removePlant(int index) {
+    setState(() {
+      plants.removeAt(index);
+    });
+  }
+
+  @override
+  void dispose() {
+    _textController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Список растений'),
+        title: const Text('Список растений'),
       ),
       body: Column(
         children: [
-          const Padding(
-            padding: EdgeInsets.all(16.0),
+          Padding(
+            padding: const EdgeInsets.all(16.0),
             child: TextField(
-              decoration: InputDecoration(
-                labelText: 'Поиск',
+              controller: _textController,
+              decoration: const InputDecoration(
+                labelText: 'Добавить растение',
                 border: OutlineInputBorder(),
               ),
             ),
@@ -27,8 +56,10 @@ class PlantListScreen extends StatelessWidget {
               itemBuilder: (context, index) {
                 return ListTile(
                   title: Text(plants[index]),
-                  onTap: () {
-                  },
+                  trailing: IconButton(
+                    icon: const Icon(Icons.delete, color: Colors.red),
+                    onPressed: () => _removePlant(index),
+                  ),
                 );
               },
             ),
@@ -36,9 +67,9 @@ class PlantListScreen extends StatelessWidget {
         ],
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {
-        },
-        child: const Icon(Icons.info),
+        onPressed: _addPlant,
+        backgroundColor: Colors.green,
+        child: const Icon(Icons.add),
       ),
     );
   }
