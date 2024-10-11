@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
-class SignUpScreen extends StatelessWidget {
-  const SignUpScreen({super.key});
+class SignInScreenWeb extends StatelessWidget {
+  const SignInScreenWeb({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Регистрация')),
+      appBar: AppBar(title: const Text('Авторизация WEB')),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -16,24 +16,16 @@ class SignUpScreen extends StatelessWidget {
             const TextField(
                 decoration: InputDecoration(labelText: 'Пароль'),
                 obscureText: true),
-            const TextField(
-                decoration: InputDecoration(labelText: 'Повторите пароль'),
-                obscureText: true),
             const SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
               },
-              child: const Text('Зарегистрироваться'),
+              child: const Text('Войти'),
             ),
-            ElevatedButton(
+            TextButton(
               onPressed: () {
               },
-              child: const Text('Зарегистрироваться через VK'),
-            ),
-            ElevatedButton(
-              onPressed: () {
-              },
-              child: const Text('Зарегистрироваться через Google'),
+              child: const Text('Регистрация'),
             ),
           ],
         ),
