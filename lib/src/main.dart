@@ -1,9 +1,11 @@
-import 'package:cactus/src/about.dart';
-import 'package:cactus/src/plantdetails.dart';
-import 'package:cactus/src/plantlist.dart';
 import 'package:cactus/src/signin.dart';
+import 'package:cactus/src/signinweb.dart';
 import 'package:cactus/src/signup.dart';
+import 'package:cactus/src/signupweb.dart';
 import 'package:flutter/material.dart';
+import 'dart:io' show Platform;
+import 'package:flutter/foundation.dart' show kIsWeb;
+
 
 void main() {
   runApp(const MyApp());
@@ -20,7 +22,13 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: AboutScreen()
+      home: getPlatformSpecificPage()
     );
+  }
+
+  Widget getPlatformSpecificPage() {
+    if (kIsWeb) return SignUpScreenWeb();
+    if (Platform.isAndroid | Platform.isIOS) return SignUpScreen();
+    return SignUpScreen();
   }
 }
