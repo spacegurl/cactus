@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class SignUpScreen extends StatelessWidget {
-  const SignUpScreen({super.key});
+class SignUpScreenWeb extends StatelessWidget {
+  const SignUpScreenWeb({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -25,15 +25,11 @@ class SignUpScreen extends StatelessWidget {
               },
               child: const Text('Зарегистрироваться'),
             ),
+            const SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
               },
               child: const Text('Зарегистрироваться через VK'),
-            ),
-            ElevatedButton(
-              onPressed: () {
-              },
-              child: const Text('Зарегистрироваться через Google'),
             ),
           ],
         ),
