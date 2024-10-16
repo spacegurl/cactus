@@ -1,36 +1,9 @@
 import 'package:flutter/material.dart';
 
-class PlantListScreen extends StatefulWidget {
-  const PlantListScreen({super.key});
+class PlantListScreen extends StatelessWidget {
+  PlantListScreen({super.key});
 
-  @override
-  _PlantListScreenState createState() => _PlantListScreenState();
-}
-
-class _PlantListScreenState extends State<PlantListScreen> {
   final List<String> plants = ['Роза', 'Орхидея', 'Суккулент', 'Кактус'];
-  final TextEditingController _textController = TextEditingController();
-
-  void _addPlant() {
-    setState(() {
-      if (_textController.text.isNotEmpty) {
-        plants.add(_textController.text);
-        _textController.clear();
-      }
-    });
-  }
-
-  void _removePlant(int index) {
-    setState(() {
-      plants.removeAt(index);
-    });
-  }
-
-  @override
-  void dispose() {
-    _textController.dispose();
-    super.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -41,12 +14,14 @@ class _PlantListScreenState extends State<PlantListScreen> {
       body: Column(
         children: [
           Padding(
-            padding: const EdgeInsets.all(16.0),
+            padding: const EdgeInsets.all(8.0),
             child: TextField(
-              controller: _textController,
-              decoration: const InputDecoration(
-                labelText: 'Добавить растение',
-                border: OutlineInputBorder(),
+              decoration: InputDecoration(
+                labelText: 'Поиск',
+                prefixIcon: const Icon(Icons.search),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(12.0),
+                ),
               ),
             ),
           ),
@@ -54,11 +29,22 @@ class _PlantListScreenState extends State<PlantListScreen> {
             child: ListView.builder(
               itemCount: plants.length,
               itemBuilder: (context, index) {
-                return ListTile(
-                  title: Text(plants[index]),
-                  trailing: IconButton(
-                    icon: const Icon(Icons.delete, color: Colors.red),
-                    onPressed: () => _removePlant(index),
+                return Card(
+                  margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  elevation: 3,
+                  child: ListTile(
+                    leading: Icon(Icons.local_florist, color: Colors.green[700]),
+                    title: Text(
+                      plants[index],
+                      style: const TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                    trailing: const Icon(Icons.arrow_forward_ios, color: Colors.grey),
+                    onTap: () {
+                      // to plantdetails screen
+                    },
                   ),
                 );
               },
@@ -67,9 +53,11 @@ class _PlantListScreenState extends State<PlantListScreen> {
         ],
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: _addPlant,
+        onPressed: () {
+          // to about screen
+        },
         backgroundColor: Colors.green,
-        child: const Icon(Icons.add),
+        child: const Icon(Icons.info),
       ),
     );
   }
