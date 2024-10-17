@@ -1,8 +1,6 @@
 import 'package:cactus/src/plantdetails.dart';
 import 'package:cactus/src/plantlist.dart';
 import 'package:cactus/src/signin.dart';
-import 'package:cactus/src/signup.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'about.dart';
@@ -34,12 +32,11 @@ class _HorizontalNavigationHomePageState
         children: [
           const SignInScreen(),
           PlantListScreen(),
-          const PlantDetailsScreen(),
           const AboutScreen(),
         ],
       ),
         bottomNavigationBar: BottomNavigationBar(
-          backgroundColor: Colors.green,
+          backgroundColor: Colors.white,
           currentIndex: _currentIndex,
           onTap: (int index) {
             _pageController.animateToPage(
@@ -51,7 +48,6 @@ class _HorizontalNavigationHomePageState
           items: const [
             BottomNavigationBarItem(icon: Icon(Icons.login), label: 'Вход'),
             BottomNavigationBarItem(icon: Icon(Icons.local_florist), label: 'Растения'),
-            BottomNavigationBarItem(icon: Icon(Icons.details), label: 'Детали'),
             BottomNavigationBarItem(icon: Icon(Icons.info), label: 'О приложении'),
           ],
         ),
