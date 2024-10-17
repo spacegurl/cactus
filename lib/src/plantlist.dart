@@ -43,7 +43,7 @@ class PlantListScreen extends StatelessWidget {
                     ),
                     trailing: const Icon(Icons.arrow_forward_ios, color: Colors.grey),
                     onTap: () {
-                      // to plantdetails screen
+                      Navigator.pushNamed(context, '/plantdetails');
                     },
                   ),
                 );
@@ -54,7 +54,7 @@ class PlantListScreen extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          // to about screen
+          Navigator.pushNamed(context, '/about');
         },
         backgroundColor: Colors.green,
         child: const Icon(Icons.info),

@@ -22,7 +22,7 @@ class SignUpScreen extends StatelessWidget {
             const SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
-                // to plantlist screen
+                Navigator.pushNamed(context, '/plantlist');
               },
               child: const Text('Зарегистрироваться'),
             ),
