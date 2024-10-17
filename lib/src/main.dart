@@ -1,10 +1,9 @@
-import 'package:cactus/src/about.dart';
-import 'package:cactus/src/plantdetails.dart';
-import 'package:cactus/src/plantlist.dart';
-import 'package:cactus/src/signin.dart';
-import 'package:cactus/src/signup.dart';
 import 'package:flutter/material.dart';
-
+import 'signin.dart';
+import 'signup.dart';
+import 'plantlist.dart';
+import 'plantdetails.dart';
+import 'about.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,12 +15,18 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Plants App',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
+        primarySwatch: Colors.green,
       ),
-      home: SignInScreen()
+      initialRoute: '/',
+      routes: {
+        '/': (context) => const SignInScreen(),
+        '/signup': (context) => const SignUpScreen(),
+        '/plantlist': (context) => PlantListScreen(),
+        '/plantdetails': (context) => const PlantDetailsScreen(),
+        '/about': (context) => const AboutScreen(),
+      },
     );
   }
 }

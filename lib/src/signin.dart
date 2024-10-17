@@ -19,13 +19,13 @@ class SignInScreen extends StatelessWidget {
             const SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
-                // to plantlist screen
+                Navigator.pushNamed(context, '/plantlist');
               },
               child: const Text('Войти'),
             ),
             TextButton(
               onPressed: () {
-                // to signup screen
+                Navigator.pushNamed(context, '/signup');
               },
               child: const Text('Регистрация'),
             ),
