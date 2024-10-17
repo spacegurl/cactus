@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class SignInScreenMob extends StatelessWidget {
-  const SignInScreenMob({super.key});
+class SignInScreen extends StatelessWidget {
+  const SignInScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -19,11 +19,13 @@ class SignInScreenMob extends StatelessWidget {
             const SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
+                Navigator.pushNamed(context, '/plantlist');
               },
               child: const Text('Войти'),
             ),
             TextButton(
               onPressed: () {
+                Navigator.pushNamed(context, '/signup');
               },
               child: const Text('Регистрация'),
             ),

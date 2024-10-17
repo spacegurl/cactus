@@ -22,18 +22,9 @@ class SignUpScreen extends StatelessWidget {
             const SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
+                Navigator.pushNamed(context, '/plantlist');
               },
               child: const Text('Зарегистрироваться'),
-            ),
-            ElevatedButton(
-              onPressed: () {
-              },
-              child: const Text('Зарегистрироваться через VK'),
-            ),
-            ElevatedButton(
-              onPressed: () {
-              },
-              child: const Text('Зарегистрироваться через Google'),
             ),
           ],
         ),

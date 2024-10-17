@@ -1,11 +1,10 @@
-import 'package:cactus/src/signin.dart';
-import 'package:cactus/src/signinweb.dart';
-import 'package:cactus/src/signup.dart';
-import 'package:cactus/src/signupweb.dart';
 import 'package:flutter/material.dart';
-import 'dart:io' show Platform;
-import 'package:flutter/foundation.dart' show kIsWeb;
-
+import 'horizontal_navigation.dart';
+import 'signin.dart';
+import 'signup.dart';
+import 'plantlist.dart';
+import 'plantdetails.dart';
+import 'about.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,18 +16,18 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Plants App',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
+        primarySwatch: Colors.green,
       ),
-      home: getPlatformSpecificPage()
+      initialRoute: '/',
+      routes: {
+        '/': (context) => const SignInScreen(),
+        '/signup': (context) => const SignUpScreen(),
+        '/plantlist': (context) => PlantListScreen(),
+        '/plantdetails': (context) => const PlantDetailsScreen(),
+        '/about': (context) => const AboutScreen(),
+      },
     );
-  }
-
-  Widget getPlatformSpecificPage() {
-    if (kIsWeb) return SignUpScreenWeb();
-    if (Platform.isAndroid | Platform.isIOS) return SignUpScreen();
-    return SignUpScreen();
   }
 }
