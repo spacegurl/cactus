@@ -1,7 +1,20 @@
 import 'package:flutter/material.dart';
 
-class SignInScreen extends StatelessWidget {
+class SignInScreen extends StatefulWidget {
   const SignInScreen({super.key});
+
+  @override
+  State<SignInScreen> createState() => _SignInScreenState();
+}
+
+class _SignInScreenState extends State<SignInScreen> {
+  Future<void> _performSignIn() {
+    return Future.delayed(const Duration(seconds: 2)).then((_) {
+      if (mounted) {
+        Navigator.pushNamed(context, '/plantlist');
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -14,13 +27,12 @@ class SignInScreen extends StatelessWidget {
           children: [
             const TextField(decoration: InputDecoration(labelText: 'Email')),
             const TextField(
-                decoration: InputDecoration(labelText: 'Пароль'),
-                obscureText: true),
+              decoration: InputDecoration(labelText: 'Пароль'),
+              obscureText: true,
+            ),
             const SizedBox(height: 20),
             ElevatedButton(
-              onPressed: () {
-                Navigator.pushNamed(context, '/plantlist');
-              },
+              onPressed: _performSignIn,
               child: const Text('Войти'),
             ),
             TextButton(
