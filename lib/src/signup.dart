@@ -1,7 +1,25 @@
 import 'package:flutter/material.dart';
 
-class SignUpScreen extends StatelessWidget {
+class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
+
+  @override
+  State<SignUpScreen> createState() => _SignUpScreenState();
+}
+
+class _SignUpScreenState extends State<SignUpScreen> {
+  Future<void> _performSignUp() async {
+    try {
+      await Future.delayed(const Duration(seconds: 3));
+      if (mounted) {
+        Navigator.pushNamed(context, '/plantlist');
+      }
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Ошибка регистрации: $e')),
+      );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -14,16 +32,16 @@ class SignUpScreen extends StatelessWidget {
           children: [
             const TextField(decoration: InputDecoration(labelText: 'Email')),
             const TextField(
-                decoration: InputDecoration(labelText: 'Пароль'),
-                obscureText: true),
+              decoration: InputDecoration(labelText: 'Пароль'),
+              obscureText: true,
+            ),
             const TextField(
-                decoration: InputDecoration(labelText: 'Повторите пароль'),
-                obscureText: true),
+              decoration: InputDecoration(labelText: 'Повторите пароль'),
+              obscureText: true,
+            ),
             const SizedBox(height: 20),
             ElevatedButton(
-              onPressed: () {
-                Navigator.pushNamed(context, '/plantlist');
-              },
+              onPressed: _performSignUp,
               child: const Text('Зарегистрироваться'),
             ),
           ],
