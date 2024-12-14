@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'horizontal_navigation.dart';
+import 'model/plant_data.dart';
+import 'model/plant_data_provider.dart';
+import 'model/service_locator.dart';
 import 'signin.dart';
 import 'signup.dart';
 import 'plantlist.dart';
@@ -7,6 +9,7 @@ import 'plantdetails.dart';
 import 'about.dart';
 
 void main() {
+  setupLocator();
   runApp(const MyApp());
 }
 
